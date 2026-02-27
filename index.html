@@ -110,35 +110,35 @@
                             <i id="current-user-icon" class="fa-solid fa-store text-sm"></i>
                         </div>
                         <div class="text-left hidden md:block">
-                            <div id="current-user-name" class="text-sm font-bold text-slate-900 leading-none">Vendor Representative</div>
-                            <div id="current-user-role" class="text-[11px] text-brand-700 mt-1 leading-none font-medium">Level 3 (Data Entry)</div>
+                            <div id="current-user-name" class="text-sm font-bold text-slate-900 leading-none">Data Entry Analyst</div>
+                            <div id="current-user-role" class="text-[11px] text-brand-700 mt-1 leading-none font-medium">Level 3 (Form Entry)</div>
                         </div>
                         <i class="fa-solid fa-chevron-down text-xs text-slate-400 ml-1"></i>
                     </button>
                     <!-- Dropdown -->
                     <div id="profile-dropdown" class="absolute right-0 mt-3 w-64 bg-white border border-slate-100 rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hidden z-50 overflow-hidden transform origin-top-right transition-all">
                         <div class="px-5 py-4 bg-slate-50 border-b border-slate-100">
-                            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Simulate Persona Login</p>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Vendor Organization Logins</p>
                         </div>
                         <button onclick="setRole('level3')" class="w-full text-left px-5 py-3.5 text-sm hover:bg-brand-50 transition-colors flex items-center gap-4 border-b border-slate-50 group">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-brand-100 group-hover:text-brand-900 transition-colors"><i class="fa-solid fa-store"></i></div>
+                            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-brand-100 group-hover:text-brand-900 transition-colors"><i class="fa-solid fa-user-pen"></i></div>
                             <div>
-                                <p class="font-bold text-slate-900">Vendor / Supplier</p>
+                                <p class="font-bold text-slate-900">Data Entry Analyst</p>
                                 <p class="text-xs text-slate-500">Level 3 (Form Entry)</p>
                             </div>
                         </button>
                         <button onclick="setRole('level2')" class="w-full text-left px-5 py-3.5 text-sm hover:bg-brand-50 transition-colors flex items-center gap-4 border-b border-slate-50 group">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-brand-100 group-hover:text-brand-900 transition-colors"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-brand-100 group-hover:text-brand-900 transition-colors"><i class="fa-solid fa-user-tie"></i></div>
                             <div>
-                                <p class="font-bold text-slate-900">Internal Assessor</p>
+                                <p class="font-bold text-slate-900">Agency Manager</p>
                                 <p class="text-xs text-slate-500">Level 2 (Review & Audit)</p>
                             </div>
                         </button>
                         <button onclick="setRole('level1')" class="w-full text-left px-5 py-3.5 text-sm hover:bg-brand-50 transition-colors flex items-center gap-4 group">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-brand-100 group-hover:text-brand-900 transition-colors"><i class="fa-solid fa-check-double"></i></div>
+                            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center group-hover:bg-brand-100 group-hover:text-brand-900 transition-colors"><i class="fa-solid fa-building-user"></i></div>
                             <div>
-                                <p class="font-bold text-slate-900">Chief Procurement</p>
-                                <p class="text-xs text-slate-500">Level 1 (Final Approval)</p>
+                                <p class="font-bold text-slate-900">Agency Director</p>
+                                <p class="text-xs text-slate-500">Level 1 (Final Sign-off)</p>
                             </div>
                         </button>
                     </div>
@@ -187,9 +187,9 @@
                             <div class="text-slate-300 text-xs mt-1">Data Encrypted & Secure</div>
                         </div>
                         <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform absolute right-20 top-[60px] w-72">
-                            <div class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center text-pink-300 mb-4"><i class="fa-solid fa-file-contract"></i></div>
-                            <div class="text-white text-2xl font-bold">3 Steps</div>
-                            <div class="text-slate-300 text-xs mt-1">Simplified Assessment Workflow</div>
+                            <div class="w-10 h-10 rounded-full bg-brand-500/20 flex items-center justify-center text-pink-300 mb-4"><i class="fa-solid fa-users-gear"></i></div>
+                            <div class="text-white text-2xl font-bold">3 Levels</div>
+                            <div class="text-slate-300 text-xs mt-1">Multi-user Internal Agency Review</div>
                         </div>
                     </div>
                 </div>
@@ -199,8 +199,8 @@
             <div class="max-w-7xl mx-auto px-4 lg:px-8 py-16">
                 <div class="flex justify-between items-end mb-8">
                     <div>
-                        <h2 class="text-2xl font-bold text-slate-800">Your Assessments</h2>
-                        <p class="text-slate-500 mt-1 text-sm">Track and manage vendor compliance requests.</p>
+                        <h2 class="text-2xl font-bold text-slate-800">Your Organization's Submissions</h2>
+                        <p class="text-slate-500 mt-1 text-sm">Prepare and track your compliance data before submitting to Infrastructure NSW.</p>
                     </div>
                     <div id="btn-new-submission-container"></div>
                 </div>
@@ -240,7 +240,7 @@
                     </div>
                     <div class="flex items-center gap-4 bg-slate-50 border border-slate-200 px-4 py-2 rounded-xl">
                         <div class="text-right">
-                            <div class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Current Stage</div>
+                            <div class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Internal Stage</div>
                             <div class="text-sm font-bold text-brand-900" id="status-badge">Draft</div>
                         </div>
                         <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center border border-brand-200">
@@ -295,7 +295,7 @@
         const state = {
             route: 'home', 
             role: 'level3', 
-            submissionStatus: 'Draft (Vendor Input)', 
+            submissionStatus: 'Draft (Data Entry)', 
             currentStep: 1, 
             documents: [
                 { id: 1, name: 'Vendor_Onboarding_Policy_Signed.pdf', type: 'Policy Doc', size: '1.2 MB' }
@@ -397,11 +397,11 @@
         }
 
         function handleWorkflowAction(action) {
-            if (action === 'submit_l2') state.submissionStatus = 'Pending Assessment (L2)';
-            else if (action === 'approve_l1') state.submissionStatus = 'Pending Final Approval (L1)';
-            else if (action === 'return_l3') state.submissionStatus = 'Returned to Vendor (Rework)';
-            else if (action === 'return_l2') state.submissionStatus = 'Returned to Assessor (L2)';
-            else if (action === 'finalize') state.submissionStatus = 'Approved & Compliant';
+            if (action === 'submit_l2') state.submissionStatus = 'Pending Manager Review (L2)';
+            else if (action === 'approve_l1') state.submissionStatus = 'Pending Director Sign-off (L1)';
+            else if (action === 'return_l3') state.submissionStatus = 'Returned to Data Entry (Rework)';
+            else if (action === 'return_l2') state.submissionStatus = 'Returned to Manager (L2)';
+            else if (action === 'finalize') state.submissionStatus = 'Submitted to Infrastructure NSW';
             
             state.currentStep = 1;
             setRoute('home');
@@ -445,17 +445,17 @@
             const iconEl = document.getElementById('current-user-icon');
             
             if (state.role === 'level3') {
-                nameEl.textContent = 'Vendor Representative';
-                roleEl.textContent = 'Level 3 (Data Entry)';
-                iconEl.className = 'fa-solid fa-store text-sm';
+                nameEl.textContent = 'Data Entry Analyst';
+                roleEl.textContent = 'Level 3 (Form Entry)';
+                iconEl.className = 'fa-solid fa-user-pen text-sm';
             } else if (state.role === 'level2') {
-                nameEl.textContent = 'Internal Assessor';
+                nameEl.textContent = 'Agency Manager';
                 roleEl.textContent = 'Level 2 (Review)';
-                iconEl.className = 'fa-solid fa-shield-halved text-sm';
+                iconEl.className = 'fa-solid fa-user-tie text-sm';
             } else if (state.role === 'level1') {
-                nameEl.textContent = 'Chief Procurement';
-                roleEl.textContent = 'Level 1 (Approval)';
-                iconEl.className = 'fa-solid fa-check-double text-sm';
+                nameEl.textContent = 'Agency Director';
+                roleEl.textContent = 'Level 1 (Sign-off)';
+                iconEl.className = 'fa-solid fa-building-user text-sm';
             }
             document.getElementById('profile-dropdown').classList.add('hidden');
         }
@@ -475,14 +475,14 @@
             let badgeColor = "bg-slate-100 text-slate-700 border-slate-200";
             if(state.submissionStatus.includes('L2')) badgeColor = "bg-blue-50 text-blue-700 border-blue-200";
             else if(state.submissionStatus.includes('L1')) badgeColor = "bg-purple-50 text-purple-700 border-purple-200";
-            else if(state.submissionStatus.includes('Approved')) badgeColor = "bg-green-50 text-green-700 border-green-200";
+            else if(state.submissionStatus.includes('Submitted')) badgeColor = "bg-green-50 text-green-700 border-green-200";
             else if(state.submissionStatus.includes('Rework')) badgeColor = "bg-orange-50 text-orange-700 border-orange-200";
 
             let requiredAction = 'Awaiting others';
-            if (state.role === 'level3' && (state.submissionStatus.includes('Vendor Input') || state.submissionStatus.includes('Rework'))) requiredAction = 'Provide Details';
+            if (state.role === 'level3' && (state.submissionStatus.includes('Data Entry') || state.submissionStatus.includes('Rework'))) requiredAction = 'Provide Details';
             if (state.role === 'level2' && state.submissionStatus.includes('L2')) requiredAction = 'Review & Audit';
             if (state.role === 'level1' && state.submissionStatus.includes('L1')) requiredAction = 'Final Sign-off';
-            if (state.submissionStatus.includes('Approved')) requiredAction = 'Completed';
+            if (state.submissionStatus.includes('Submitted')) requiredAction = 'Submitted externally';
 
             document.getElementById('dashboard-table-body').innerHTML = `
                 <tr class="hover:bg-slate-50 transition-colors group cursor-pointer" onclick="setRoute('portal')">
@@ -511,7 +511,7 @@
             const steps = [
                 { id: 1, title: 'Compliance Documents', desc: 'Core policies & statements' },
                 { id: 2, title: 'Capability Metrics', desc: 'Financial, Cyber & ESG' },
-                { id: 3, title: 'Workflow Review', desc: 'Sign-offs & routing' }
+                { id: 3, title: 'Internal Sign-offs', desc: 'Manager & Director Review' }
             ];
             
             let stepperHTML = `<div class="absolute left-4 top-0 bottom-0 w-0.5 bg-slate-100 -z-10"></div>`;
@@ -545,7 +545,7 @@
             nextBtn.style.display = state.currentStep === 3 ? 'none' : 'flex';
 
             // Permissions Check
-            const isL3Active = state.role === 'level3' && (state.submissionStatus.includes('Vendor') || state.submissionStatus.includes('Rework'));
+            const isL3Active = state.role === 'level3' && (state.submissionStatus.includes('Data Entry') || state.submissionStatus.includes('Rework'));
             const isL2Active = state.role === 'level2' && state.submissionStatus.includes('L2');
             const isL1Active = state.role === 'level1' && state.submissionStatus.includes('L1');
             const canEditResponses = isL3Active || isL2Active || isL1Active;
@@ -557,7 +557,7 @@
                     <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-soft animate-in fade-in slide-in-from-bottom-4 duration-500">
                         <div class="mb-8">
                             <h2 class="text-2xl font-bold text-slate-900">Compliance Documents</h2>
-                            <p class="text-slate-500 text-sm mt-1">Upload required organizational policies and foundational documents.</p>
+                            <p class="text-slate-500 text-sm mt-1">Upload required organizational policies and foundational documents for internal review.</p>
                         </div>
                 `;
                 if (canEditResponses) {
@@ -640,7 +640,7 @@
                                 <!-- Data Entry -->
                                 <div class="lg:col-span-3 space-y-5">
                                     <div>
-                                        <label class="block text-xs font-bold text-slate-700 mb-2">Vendor Response (${metric.measure})</label>
+                                        <label class="block text-xs font-bold text-slate-700 mb-2">Agency Response (${metric.measure})</label>
                                         <input type="text" 
                                             onchange="handleMetricChange(${metric.id}, 'response', this.value)"
                                             value="${metric.response}"
@@ -650,30 +650,30 @@
                                     </div>
                                     
                                     <div class="${(!isL3Active && !metric.l3Comment && !canEditL3Notes) ? 'hidden' : 'block'} border-l-2 border-brand-200 pl-4">
-                                        <label class="block text-xs font-bold text-slate-700 mb-2">Vendor Context / Notes</label>
+                                        <label class="block text-xs font-bold text-slate-700 mb-2">Data Entry Notes (L3)</label>
                                         <textarea 
                                             onchange="handleMetricChange(${metric.id}, 'l3Comment', this.value)"
                                             ${!canEditL3Notes ? 'disabled' : ''}
                                             class="w-full text-sm font-medium border border-slate-300 px-4 py-3 rounded-xl h-24 resize-none focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 disabled:bg-slate-50 disabled:text-slate-500 transition-all"
-                                            placeholder="Provide additional context to support your response...">${metric.l3Comment}</textarea>
+                                            placeholder="Provide context for the internal reviewer...">${metric.l3Comment}</textarea>
                                     </div>
 
                                     <div class="${(!isL2Active && !metric.l2Comment && !canEditL2Notes) ? 'hidden' : 'block'} border-l-2 border-blue-400 pl-4 mt-6">
-                                        <label class="block text-xs font-bold text-blue-800 mb-2"><i class="fa-solid fa-shield-halved mr-1"></i> Assessor Notes (L2)</label>
+                                        <label class="block text-xs font-bold text-blue-800 mb-2"><i class="fa-solid fa-user-tie mr-1"></i> Manager Review Notes (L2)</label>
                                         <textarea 
                                             onchange="handleMetricChange(${metric.id}, 'l2Comment', this.value)"
                                             ${!canEditL2Notes ? 'disabled' : ''}
                                             class="w-full text-sm font-medium border border-blue-200 bg-blue-50/30 px-4 py-3 rounded-xl h-24 resize-none focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 disabled:bg-transparent disabled:border-transparent disabled:px-0 transition-all"
-                                            placeholder="${isL2Active ? 'Add internal audit notes...' : ''}">${metric.l2Comment || ''}</textarea>
+                                            placeholder="${isL2Active ? 'Add internal audit/review notes...' : ''}">${metric.l2Comment || ''}</textarea>
                                     </div>
                                     
                                     <div class="${(!isL1Active && !metric.l1Comment && !canEditL1Notes) ? 'hidden' : 'block'} border-l-2 border-purple-400 pl-4 mt-6">
-                                        <label class="block text-xs font-bold text-purple-800 mb-2"><i class="fa-solid fa-check-double mr-1"></i> Executive Approval Notes (L1)</label>
+                                        <label class="block text-xs font-bold text-purple-800 mb-2"><i class="fa-solid fa-building-user mr-1"></i> Director Sign-off Notes (L1)</label>
                                         <textarea 
                                             onchange="handleMetricChange(${metric.id}, 'l1Comment', this.value)"
                                             ${!canEditL1Notes ? 'disabled' : ''}
                                             class="w-full text-sm font-medium border border-purple-200 bg-purple-50/30 px-4 py-3 rounded-xl h-24 resize-none focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 disabled:bg-transparent disabled:border-transparent disabled:px-0 transition-all"
-                                            placeholder="${isL1Active ? 'Add final sign-off notes...' : ''}">${metric.l1Comment || ''}</textarea>
+                                            placeholder="${isL1Active ? 'Add final director notes before external submission...' : ''}">${metric.l1Comment || ''}</textarea>
                                     </div>
                                 </div>
 
@@ -702,31 +702,31 @@
                 let actionsHTML = '';
                 
                 if (isL3Active) {
-                    messageHTML = `<p class="text-slate-600 font-medium">As the <strong>Vendor Representative</strong>, please review all provided data and uploaded evidence. Once submitted, the assessment will be locked and sent to the NSW Government Procurement team for review.</p>`;
+                    messageHTML = `<p class="text-slate-600 font-medium">As the <strong>Data Entry Analyst</strong>, please review all provided data and uploaded evidence. Once completed, pass this to your Agency Manager for internal review.</p>`;
                     actionsHTML = `
                         <button onclick="handleWorkflowAction('submit_l2')" class="w-full py-4 px-6 text-white font-bold rounded-xl shadow-lg shadow-brand-500/30 hover:-translate-y-1 transition-all flex items-center justify-center gap-3 bg-gradient-to-r from-brand-900 to-brand-500 text-lg">
-                            Sign & Submit Assessment <i class="fa-solid fa-paper-plane"></i>
+                            Submit for Internal Manager Review <i class="fa-solid fa-arrow-right"></i>
                         </button>`;
                 } else if (isL2Active) {
-                    messageHTML = `<p class="text-slate-600 font-medium">As the <strong>Internal Assessor (L2)</strong>, review the vendor's inputs. Add audit notes to the metrics. You can approve this to move to Executive Sign-off, or return it to the vendor if data is missing.</p>`;
+                    messageHTML = `<p class="text-slate-600 font-medium">As the <strong>Agency Manager (L2)</strong>, internally review the analyst's inputs. You can approve this to move to your Agency Director for final sign-off, or return it to the analyst if data is missing.</p>`;
                     actionsHTML = `
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <button onclick="handleWorkflowAction('return_l3')" class="w-full py-3.5 px-4 bg-white border-2 border-orange-200 text-orange-600 hover:bg-orange-50 font-bold rounded-xl transition-colors flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-rotate-left"></i> Return to Vendor
+                                <i class="fa-solid fa-rotate-left"></i> Return to Analyst
                             </button>
                             <button onclick="handleWorkflowAction('approve_l1')" class="w-full py-3.5 px-4 text-white font-bold rounded-xl shadow-md bg-blue-600 hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
-                                Recommend Approval (Send to L1) <i class="fa-solid fa-arrow-right"></i>
+                                Recommend for Director Sign-off <i class="fa-solid fa-arrow-right"></i>
                             </button>
                         </div>`;
                 } else if (isL1Active) {
-                    messageHTML = `<p class="text-slate-600 font-medium">As the <strong>Chief Procurement Officer (L1)</strong>, provide final authorization for this vendor assessment. This action marks the vendor as fully compliant in the system.</p>`;
+                    messageHTML = `<p class="text-slate-600 font-medium">As the <strong>Agency Director (L1)</strong>, provide final authorization for your organization's assessment. Submitting this will lock the form and transmit the data externally to Infrastructure NSW.</p>`;
                     actionsHTML = `
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <button onclick="handleWorkflowAction('return_l2')" class="w-full py-3.5 px-4 bg-white border-2 border-slate-200 text-slate-600 hover:bg-slate-50 font-bold rounded-xl transition-colors flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-rotate-left"></i> Return to Assessor
+                                <i class="fa-solid fa-rotate-left"></i> Return to Manager
                             </button>
                             <button onclick="handleWorkflowAction('finalize')" class="w-full py-3.5 px-4 bg-green-600 text-white font-bold rounded-xl shadow-md hover:bg-green-700 transition-colors flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-check-double"></i> Authorize & Mark Compliant
+                                <i class="fa-solid fa-paper-plane"></i> Sign & Submit to Infrastructure NSW
                             </button>
                         </div>`;
                 } else {
@@ -735,7 +735,7 @@
                             <div class="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-check"></i></div>
                             <div>
                                 <h4 class="font-bold text-green-800">No Action Required</h4>
-                                <p class="text-sm text-green-700 mt-1">This submission is currently assigned to another workflow tier or has been fully finalized.</p>
+                                <p class="text-sm text-green-700 mt-1">This submission is currently assigned to another internal tier or has been successfully submitted to Infrastructure NSW.</p>
                             </div>
                         </div>`;
                 }
@@ -743,8 +743,8 @@
                 contentContainer.innerHTML = `
                     <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-soft animate-in fade-in duration-500 max-w-3xl">
                         <div class="mb-8 border-b border-slate-100 pb-6">
-                            <h2 class="text-2xl font-bold text-slate-900">Workflow & Authorization</h2>
-                            <p class="text-slate-500 text-sm mt-1">Finalize your review and route the assessment.</p>
+                            <h2 class="text-2xl font-bold text-slate-900">Internal Workflow & Final Submission</h2>
+                            <p class="text-slate-500 text-sm mt-1">Finalize your internal review and route the assessment appropriately.</p>
                         </div>
                         
                         <div class="p-6 border border-brand-100 bg-brand-50/30 rounded-xl mb-8">
