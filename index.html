@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure NSW | Asset Assurance Portal</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        nswPurple: '#7c0060',
+                        nswPink: '#d9148d'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth transitions for view switching */
+        .view-section { display: none; opacity: 0; transition: opacity 0.3s ease-in-out; }
+        .view-section.active { display: block; opacity: 1; animation: fadeIn 0.4s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Custom scrollbar for textareas */
+        textarea::-webkit-scrollbar { width: 8px; }
+        textarea::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        textarea::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-sans min-h-screen">
+
+    <!-- HEADER -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-2xl font-semibold cursor-pointer text-nswPurple" onclick="setRoute('home')">
+                Infrastructure NSW
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <!-- Persona Switcher -->
+                <div class="hidden md:flex items-center text-sm border border-gray-200 rounded-md overflow-hidden shadow-sm" id="role-switcher">
+                    <button onclick="setRole('level3')" id="btn-role-level3" class="px-3 py-1.5 transition-colors bg-gray-100 font-bold text-nswPurple">L3 (Data Entry)</button>
+                    <div class="w-px bg-gray-200 h-6"></div>
+                    <button onclick="setRole('level2')" id="btn-role-level2" class="px-3 py-1.5 transition-colors bg-white hover:bg-gray-50 text-gray-600">L2 (Manager)</button>
+                    <div class="w-px bg-gray-200 h-6"></div>
+                    <button onclick="setRole('level1')" id="btn-role-level1" class="px-3 py-1.5 transition-colors bg-white hover:bg-gray-50 text-gray-600">L1 (Executive)</button>
+                </div>
+
+                <div class="flex w-64">
+                    <input type="text" placeholder="Search the site" class="w-full border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:border-nswPurple">
+                    <button class="text-white px-3 py-1.5 flex items-center justify-center transition-opacity hover:opacity-90 bg-nswPurple">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 border-t border-gray-100 hidden md:block">
+            <ul class="flex text-sm font-medium text-gray-700">
+                <li class="px-4 py-3 border-b-2 cursor-pointer hover:bg-gray-50 transition-colors border-nswPink text-nswPurple">Asset Portal (Active)</li>
+                <li class="px-4 py-3 border-b-2 border-transparent hover:border-gray-300 cursor-pointer">Projects NSW</li>
+                <li class="px-4 py-3 border-b-2 border-transparent hover:border-gray-300 cursor-pointer">Investor Assurance</li>
+                <li class="px-4 py-3 border-b-2 border-transparent hover:border-gray-300 cursor-pointer">Industry</li>
+                <li class="px-4 py-3 border-b-2 border-transparent hover:border-gray-300 cursor-pointer">News</li>
+                <li class="px-4 py-3 border-b-2 border-transparent hover:border-gray-300 cursor-pointer">About us</li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- MAIN VIEWS -->
+    <main>
+        <!-- HOME VIEW -->
+        <div id="view-home" class="view-section active">
+            <!-- Hero -->
+            <div class="flex flex-col md:flex-row min-h-[450px]">
+                <div class="md:w-1/3 p-12 flex flex-col justify-center relative bg-nswPurple">
+                    <div class="w-16 h-1 absolute top-12 left-12 bg-nswPink"></div>
+                    <h1 class="text-4xl font-light text-white mb-6 leading-tight mt-4">Asset Assurance <br/>Portal</h1>
+                    <p class="text-purple-100 mb-8 text-sm leading-relaxed">The central hub for lodging, reviewing, and approving Asset Planning Submissions across NSW Government agencies.</p>
+                    <div>
+                        <button onclick="setRoute('portal')" class="bg-white text-sm font-medium px-6 py-3 flex items-center gap-2 hover:bg-gray-100 transition-colors text-nswPurple">
+                            Enter Submission Portal <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="w-full h-[2px] absolute bottom-12 left-0 opacity-30 bg-nswPink"></div>
+                </div>
+                <div class="md:w-2/3 bg-gray-900 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542157585-ef20bfcce579?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-60 mix-blend-overlay"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-nswPurple/80 to-transparent"></div>
+                </div>
+            </div>
+
+            <!-- Dashboard -->
+            <div class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+                <div class="flex justify-between items-end mb-8 border-b border-gray-200 pb-4">
+                    <div>
+                        <h2 class="text-2xl font-light text-gray-900">My Agency Submissions</h2>
+                        <p class="text-gray-500 mt-1 text-sm">Manage submissions requiring your attention.</p>
+                    </div>
+                    <div id="btn-new-submission-container">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 shadow-sm rounded-sm overflow-x-auto">
+                    <table class="w-full text-left text-sm min-w-[800px]">
+                        <thead class="bg-gray-50 border-b border-gray-200 text-gray-700">
+                            <tr>
+                                <th class="p-4 font-medium">Financial Year</th>
+                                <th class="p-4 font-medium">Agency</th>
+                                <th class="p-4 font-medium">Workflow Status</th>
+                                <th class="p-4 font-medium">Your Required Action</th>
+                                <th class="p-4 font-medium text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dashboard-table-body">
+                            <!-- Injected via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PORTAL VIEW (FORM) -->
+        <div id="view-portal" class="view-section bg-gray-50 min-h-[calc(100vh-140px)]">
+            <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+                
+                <!-- Breadcrumbs & Header -->
+                <div class="mb-8">
+                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                        <button onclick="setRoute('home')" class="hover:text-nswPurple transition-colors">Home</button>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        <button onclick="setRoute('home')" class="hover:text-nswPurple transition-colors">My Submissions</button>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        <span class="text-gray-900">2025-26 Sydney Metro</span>
+                    </div>
+                    
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <h1 class="text-3xl font-light text-nswPurple">Asset Planning Submission</h1>
+                            <p class="text-gray-600 mt-2 text-sm">Complete the required fields and attach supporting documentation for the current financial year.</p>
+                        </div>
+                        <div class="bg-gray-50 border border-gray-200 px-4 py-2 flex flex-col items-end rounded-sm shadow-sm">
+                            <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">Current Stage</span>
+                            <span class="text-sm font-semibold flex items-center gap-2 mt-1 text-nswPurple" id="status-badge">
+                                <!-- Injected via JS -->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Container -->
+                <div class="bg-white border border-gray-200 shadow-sm rounded-sm overflow-hidden flex flex-col md:flex-row min-h-[600px]">
+                    
+                    <!-- Sidebar Stepper -->
+                    <div class="w-full md:w-64 bg-gray-50 border-r border-gray-200 p-6 shrink-0" id="stepper-container">
+                        <!-- Injected via JS -->
+                    </div>
+
+                    <!-- Step Content Area -->
+                    <div class="flex-1 p-8 overflow-y-auto bg-white flex flex-col">
+                        <div id="step-content-container" class="flex-1">
+                            <!-- Step contents injected here -->
+                        </div>
+                        
+                        <!-- Footer Navigation -->
+                        <div class="mt-6 flex justify-between items-center py-4 border-t border-gray-200">
+                            <button onclick="setStep(Math.max(1, state.currentStep - 1))" id="btn-prev-step" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+                                <i class="fa-solid fa-chevron-left"></i> Previous Step
+                            </button>
+                            <button onclick="setStep(Math.min(3, state.currentStep + 1))" id="btn-next-step" class="flex items-center gap-2 px-6 py-2 text-sm font-medium text-white rounded-sm shadow-sm transition-opacity hover:opacity-90 bg-nswPurple">
+                                Save & Continue <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- STATE MANAGEMENT ---
+        const state = {
+            route: 'home', // 'home', 'portal'
+            role: 'level3', // 'level3', 'level2', 'level1'
+            submissionStatus: 'Draft (Level 3)', 
+            currentStep: 1, // 1, 2, 3
+            documents: [
+                { id: 1, name: 'Asset Management Plan Sydney Metro.pdf', type: 'AMP', version: '1.0' }
+            ],
+            metrics: [
+                { 
+                    id: 1, focusArea: 'Safety & Service', metric: 'Safety', 
+                    question: '% incidents (asset failure) assessed high safety risk', 
+                    response: '', measure: 'Percentage', attachments: [], 
+                    l3Comment: '', l2Comment: '', l1Comment: '', status: 'pending' 
+                },
+                { 
+                    id: 2, focusArea: 'Resilience', metric: 'Capital Fiscal Impact', 
+                    question: 'Sum of capital impacts in the last financial year / Asset Value', 
+                    response: '', measure: 'Currency', attachments: [{ name: 'financial_report_Q3.pdf', size: '2.4 MB' }], 
+                    l3Comment: 'Values are estimates based on Q3.', l2Comment: '', l1Comment: '', status: 'pending' 
+                },
+                { 
+                    id: 3, focusArea: 'Capacity', metric: 'Availability', 
+                    question: '% additional service capacity in asset portfolio', 
+                    response: '', measure: 'Percentage', attachments: [], 
+                    l3Comment: '', l2Comment: '', l1Comment: '', status: 'pending' 
+                }
+            ]
+        };
+
+        // --- GLOBAL ACTIONS ---
+        function setRoute(route) {
+            state.route = route;
+            render();
+            window.scrollTo(0, 0);
+        }
+
+        function setRole(role) {
+            state.role = role;
+            render();
+        }
+
+        function setStep(step) {
+            state.currentStep = step;
+            render();
+        }
+
+        function handleMetricChange(id, field, value) {
+            const metric = state.metrics.find(m => m.id === id);
+            if (metric) metric[field] = value;
+            // No full re-render needed for input typing, handled by DOM naturally
+        }
+
+        function handleFileUpload(event, metricId) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const sizeStr = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+            
+            const metric = state.metrics.find(m => m.id === metricId);
+            if (metric) {
+                metric.attachments.push({ name: file.name, size: sizeStr });
+                render(); // Re-render to show new file
+            }
+        }
+
+        function removeAttachment(metricId, index) {
+            const metric = state.metrics.find(m => m.id === metricId);
+            if (metric) {
+                metric.attachments.splice(index, 1);
+                render();
+            }
+        }
+
+        function handleWorkflowAction(action) {
+            if (action === 'submit_l2') state.submissionStatus = 'Pending L2 Review';
+            else if (action === 'approve_l1') state.submissionStatus = 'Pending L1 Approval';
+            else if (action === 'return_l3') state.submissionStatus = 'Draft (Level 3)';
+            else if (action === 'return_l2') state.submissionStatus = 'Pending L2 Review';
+            else if (action === 'finalize') state.submissionStatus = 'Approved & Submitted';
+            
+            state.currentStep = 1;
+            setRoute('home');
+        }
+
+        function triggerMockDocUpload() {
+            // Mock adding a document for visual feedback
+            state.documents.push({ id: Date.now(), name: 'Strategic_Plan_2025.pdf', type: 'SAMP', version: '1.0' });
+            render();
+        }
+
+        function removeDoc(id) {
+            state.documents = state.documents.filter(d => d.id !== id);
+            render();
+        }
+
+        // --- RENDER FUNCTIONS ---
+        function render() {
+            updateRoleUI();
+            updateViewUI();
+            
+            if (state.route === 'home') {
+                renderDashboard();
+            } else {
+                renderPortal();
+            }
+        }
+
+        function updateRoleUI() {
+            const roles = ['level3', 'level2', 'level1'];
+            roles.forEach(r => {
+                const btn = document.getElementById(`btn-role-${r}`);
+                if (state.role === r) {
+                    btn.className = "px-3 py-1.5 transition-colors bg-gray-100 font-bold text-nswPurple";
+                } else {
+                    btn.className = "px-3 py-1.5 transition-colors bg-white hover:bg-gray-50 text-gray-600";
+                }
+            });
+        }
+
+        function updateViewUI() {
+            document.getElementById('view-home').classList.remove('active');
+            document.getElementById('view-portal').classList.remove('active');
+            document.getElementById(`view-${state.route}`).classList.add('active');
+        }
+
+        function renderDashboard() {
+            const newSubBtnContainer = document.getElementById('btn-new-submission-container');
+            if (state.role === 'level3') {
+                newSubBtnContainer.innerHTML = `
+                    <button onclick="setRoute('portal')" class="text-white px-5 py-2.5 text-sm font-medium flex items-center gap-2 transition-opacity hover:opacity-90 rounded-sm shadow-sm bg-nswPurple">
+                        <i class="fa-solid fa-file-lines"></i> Start New Submission
+                    </button>
+                `;
+            } else {
+                newSubBtnContainer.innerHTML = '';
+            }
+
+            // Determine badge colors and required actions based on logic
+            let badgeClass = "border";
+            if (state.submissionStatus.includes('Level 3')) badgeClass += " bg-gray-100 text-gray-800 border-gray-200";
+            else if (state.submissionStatus.includes('Level 2')) badgeClass += " bg-blue-50 text-blue-700 border-blue-200";
+            else if (state.submissionStatus.includes('Level 1')) badgeClass += " bg-purple-50 text-purple-700 border-purple-200";
+            else if (state.submissionStatus.includes('Approved')) badgeClass += " bg-green-50 text-green-700 border-green-200";
+
+            let requiredAction = 'Awaiting other level';
+            if (state.role === 'level3' && state.submissionStatus.includes('Level 3')) requiredAction = 'Data Entry Required';
+            if (state.role === 'level2' && state.submissionStatus.includes('Level 2')) requiredAction = 'Manager Review Required';
+            if (state.role === 'level1' && state.submissionStatus.includes('Level 1')) requiredAction = 'Executive Approval Required';
+            if (state.submissionStatus.includes('Approved')) requiredAction = 'None';
+
+            document.getElementById('dashboard-table-body').innerHTML = `
+                <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                    <td class="p-4 font-semibold text-gray-900">2025-26 Submission</td>
+                    <td class="p-4 text-gray-600">Sydney Metro</td>
+                    <td class="p-4">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${badgeClass}">
+                            ${state.submissionStatus}
+                        </span>
+                    </td>
+                    <td class="p-4 text-gray-600">${requiredAction}</td>
+                    <td class="p-4 text-right">
+                        <button onclick="setRoute('portal')" class="font-medium hover:underline text-sm text-nswPurple">
+                            Open Submission
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }
+
+        function renderPortal() {
+            // Status Badge
+            document.getElementById('status-badge').innerHTML = `<i class="fa-solid fa-shield-halved"></i> ${state.submissionStatus}`;
+            
+            // Stepper Sidebar
+            const steps = [
+                { id: 1, label: 'Policy & Plans', desc: 'Upload core documents' },
+                { id: 2, label: 'Performance Metrics', desc: 'Data & attachments' },
+                { id: 3, label: 'Workflow & Review', desc: 'Approvals & routing' }
+            ];
+            
+            let stepperHTML = `<h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-6">Submission Steps</h3><div class="space-y-6">`;
+            steps.forEach(step => {
+                const isActive = state.currentStep === step.id;
+                const isPast = state.currentStep > step.id;
+                
+                let circleClass = "border-gray-300 bg-white text-gray-400";
+                if (isActive) circleClass = "border-nswPurple bg-nswPurple text-white";
+                else if (isPast) circleClass = "border-nswPurple bg-white text-nswPurple";
+                
+                stepperHTML += `
+                    <div class="flex gap-4 group cursor-pointer" onclick="setStep(${step.id})">
+                        <div class="flex flex-col items-center">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors border-2 ${circleClass}">
+                                ${isPast ? '<i class="fa-solid fa-circle-check"></i>' : step.id}
+                            </div>
+                            ${step.id < 3 ? `<div class="w-0.5 h-full mt-2 ${isPast ? 'bg-nswPurple' : 'bg-gray-200'}"></div>` : ''}
+                        </div>
+                        <div class="pt-1 pb-4">
+                            <p class="text-sm font-semibold ${isActive ? 'text-gray-900' : 'text-gray-500'}">${step.label}</p>
+                            <p class="text-xs text-gray-400 mt-0.5">${step.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            stepperHTML += `</div>`;
+            document.getElementById('stepper-container').innerHTML = stepperHTML;
+
+            // Footer Navigation State
+            const prevBtn = document.getElementById('btn-prev-step');
+            const nextBtn = document.getElementById('btn-next-step');
+            
+            prevBtn.style.opacity = state.currentStep === 1 ? '0' : '1';
+            prevBtn.style.pointerEvents = state.currentStep === 1 ? 'none' : 'auto';
+            nextBtn.style.display = state.currentStep === 3 ? 'none' : 'flex';
+
+            // Determine permissions
+            const isL3Active = state.role === 'level3' && state.submissionStatus.includes('Level 3');
+            const isL2Active = state.role === 'level2' && state.submissionStatus.includes('Level 2');
+            const isL1Active = state.role === 'level1' && state.submissionStatus.includes('Level 1');
+            const canEditResponses = isL3Active || isL2Active;
+
+            const contentContainer = document.getElementById('step-content-container');
+
+            // Render Step Content
+            if (state.currentStep === 1) {
+                let html = `
+                    <div class="animate-in fade-in duration-500">
+                        <h2 class="text-xl font-medium text-gray-900 border-b border-gray-100 pb-4 mb-6">Required Core Documents</h2>
+                `;
+                if (canEditResponses) {
+                    html += `
+                        <div onclick="triggerMockDocUpload()" class="border-2 border-dashed border-gray-300 rounded-sm p-8 text-center bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer mb-8 group">
+                            <i class="fa-solid fa-cloud-arrow-up text-3xl text-gray-400 mb-3 group-hover:text-nswPurple transition-colors"></i>
+                            <p class="text-sm font-medium text-gray-700">Click here to simulate document upload</p>
+                            <p class="text-xs text-gray-500 mt-1">SAMP, AMPs, and Asset Management Policies (PDF up to 50MB)</p>
+                        </div>
+                    `;
+                }
+                html += `<div class="space-y-3">`;
+                state.documents.forEach(doc => {
+                    html += `
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-sm hover:border-gray-300 transition-colors">
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 bg-purple-50 rounded text-nswPurple"><i class="fa-solid fa-file-lines text-xl"></i></div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">${doc.name}</p>
+                                    <p class="text-xs text-gray-500">${doc.type} • Version ${doc.version}</p>
+                                </div>
+                            </div>
+                            ${canEditResponses ? `<button onclick="removeDoc(${doc.id})" class="text-gray-400 hover:text-red-500 transition-colors p-2"><i class="fa-solid fa-trash-can"></i></button>` : ''}
+                        </div>
+                    `;
+                });
+                html += `</div></div>`;
+                contentContainer.innerHTML = html;
+
+            } else if (state.currentStep === 2) {
+                let html = `
+                    <div class="animate-in fade-in duration-500">
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-4 mb-6">
+                            <h2 class="text-xl font-medium text-gray-900">Infrastructure Performance Metrics</h2>
+                        </div>
+                        <div class="space-y-8">
+                `;
+                
+                state.metrics.forEach(metric => {
+                    let attachmentsHTML = '';
+                    if (metric.attachments.length === 0) {
+                        attachmentsHTML = `<div class="text-center py-6 text-sm text-gray-400 border border-dashed border-gray-300 bg-white rounded-sm">No files attached</div>`;
+                    } else {
+                        attachmentsHTML = `<ul class="space-y-2">`;
+                        metric.attachments.forEach((file, idx) => {
+                            attachmentsHTML += `
+                                <li class="flex items-center justify-between p-2.5 bg-white border border-gray-200 rounded-sm text-sm shadow-sm group">
+                                    <div class="flex items-center gap-2 overflow-hidden">
+                                        <i class="fa-solid fa-file-lines text-gray-400 shrink-0"></i>
+                                        <span class="truncate font-medium text-gray-700">${file.name}</span>
+                                        <span class="text-xs text-gray-400 shrink-0">(${file.size})</span>
+                                    </div>
+                                    ${canEditResponses ? `<button onclick="removeAttachment(${metric.id}, ${idx})" class="text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity p-1"><i class="fa-solid fa-trash-can"></i></button>` : ''}
+                                </li>
+                            `;
+                        });
+                        attachmentsHTML += `</ul>`;
+                    }
+
+                    html += `
+                        <div class="border border-gray-200 rounded-sm p-6 bg-white shadow-sm hover:border-gray-300 transition-colors">
+                            <div class="flex gap-4 mb-6">
+                                <div class="w-10 h-10 shrink-0 bg-gray-100 rounded-sm flex items-center justify-center font-bold text-gray-500 border border-gray-200">${metric.id}</div>
+                                <div>
+                                    <span class="text-xs font-bold text-nswPurple uppercase tracking-wider">${metric.focusArea}</span>
+                                    <h3 class="text-base font-semibold text-gray-900 mt-1">${metric.metric}</h3>
+                                    <p class="text-sm text-gray-600 mt-1">${metric.question}</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 pl-14">
+                                <!-- Left Col -->
+                                <div class="space-y-5">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-700 mb-1.5 uppercase tracking-wide">Data Entry (${metric.measure})</label>
+                                        <input type="text" 
+                                            onchange="handleMetricChange(${metric.id}, 'response', this.value)"
+                                            value="${metric.response}"
+                                            ${!canEditResponses ? 'disabled' : ''}
+                                            class="w-full text-sm border border-gray-300 px-3 py-2 rounded-sm focus:outline-none focus:border-nswPurple focus:ring-1 focus:ring-nswPurple disabled:bg-gray-50 disabled:text-gray-500"
+                                            placeholder="Enter ${metric.measure}..." />
+                                    </div>
+                                    
+                                    <div class="${!isL3Active && !metric.l3Comment ? 'hidden' : 'block'}">
+                                        <label class="flex items-center gap-2 text-xs font-semibold text-gray-700 mb-1.5 uppercase tracking-wide">
+                                            <i class="fa-solid fa-circle-user text-gray-400"></i> Level 3 (Entry) Notes
+                                        </label>
+                                        <textarea 
+                                            onchange="handleMetricChange(${metric.id}, 'l3Comment', this.value)"
+                                            ${!isL3Active ? 'disabled' : ''}
+                                            class="w-full text-sm border border-gray-300 px-3 py-2 rounded-sm h-20 resize-none focus:outline-none focus:border-nswPurple disabled:bg-gray-50 disabled:text-gray-600"
+                                            placeholder="Add supporting context...">${metric.l3Comment}</textarea>
+                                    </div>
+
+                                    ${(state.role === 'level2' || state.role === 'level1' || metric.l2Comment) ? `
+                                        <div class="bg-blue-50/50 p-4 border border-blue-100 rounded-sm">
+                                            <label class="flex items-center gap-2 text-xs font-semibold text-blue-800 mb-1.5 uppercase tracking-wide">
+                                                <i class="fa-solid fa-shield-halved"></i> Level 2 (Manager) Review
+                                            </label>
+                                            <textarea 
+                                                onchange="handleMetricChange(${metric.id}, 'l2Comment', this.value)"
+                                                ${!isL2Active ? 'disabled' : ''}
+                                                class="w-full text-sm border border-blue-200 px-3 py-2 rounded-sm h-20 resize-none focus:outline-none focus:border-blue-500 disabled:bg-transparent disabled:border-transparent disabled:px-0 disabled:text-blue-900"
+                                                placeholder="${isL2Active ? 'Add review notes or requirements for rework...' : 'No manager comments yet.'}">${metric.l2Comment}</textarea>
+                                        </div>
+                                    ` : ''}
+                                </div>
+
+                                <!-- Right Col -->
+                                <div class="bg-gray-50 border border-gray-200 rounded-sm p-5 h-fit">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <label class="text-xs font-semibold text-gray-700 uppercase tracking-wide flex items-center gap-2">
+                                            <i class="fa-solid fa-paperclip"></i> Supporting Evidence
+                                        </label>
+                                        ${canEditResponses ? `
+                                            <label class="cursor-pointer text-xs font-semibold hover:underline text-nswPurple">
+                                                + Attach File
+                                                <input type="file" class="hidden" onchange="handleFileUpload(event, ${metric.id})" />
+                                            </label>
+                                        ` : ''}
+                                    </div>
+                                    ${attachmentsHTML}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += `</div></div>`;
+                contentContainer.innerHTML = html;
+
+            } else if (state.currentStep === 3) {
+                
+                let messageHTML = '';
+                if (isL3Active) messageHTML = `<p class="text-sm text-gray-600">As a <strong>Level 3 Data Entry User</strong>, review your data and attachments. Once complete, submit to your Level 2 Manager for review.</p>`;
+                else if (isL2Active) messageHTML = `<p class="text-sm text-gray-600">As a <strong>Level 2 Manager</strong>, review the inputs provided by Level 3. You may modify the data, return it for rework, or approve and forward to Executive Approval.</p>`;
+                else if (isL1Active) messageHTML = `<p class="text-sm text-gray-600">As a <strong>Level 1 Executive</strong>, please review the final submission package. Your approval will finalize the submission to Infrastructure NSW.</p>`;
+                else messageHTML = `<p class="text-sm text-gray-600 flex items-center gap-2"><i class="fa-solid fa-circle-check text-green-600"></i> This submission is currently with another tier or finalized. No action is required from you at this time.</p>`;
+
+                let actionsHTML = '';
+                if (isL3Active) {
+                    actionsHTML = `
+                        <button onclick="handleWorkflowAction('submit_l2')" class="w-full py-3 px-4 text-white font-medium rounded-sm shadow-sm transition-opacity hover:opacity-90 flex items-center justify-center gap-2 bg-nswPurple">
+                            Submit for Manager Review (Level 2) <i class="fa-solid fa-chevron-right"></i>
+                        </button>`;
+                } else if (isL2Active) {
+                    actionsHTML = `
+                        <div class="space-y-4">
+                            <button onclick="handleWorkflowAction('approve_l1')" class="w-full py-3 px-4 text-white font-medium rounded-sm shadow-sm transition-opacity hover:opacity-90 flex items-center justify-center gap-2 bg-nswPurple">
+                                Approve & Send to Executive (Level 1) <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <button onclick="handleWorkflowAction('return_l3')" class="w-full py-3 px-4 bg-white border border-gray-300 text-gray-700 font-medium rounded-sm shadow-sm hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                                Return to Level 3 for Rework
+                            </button>
+                        </div>`;
+                } else if (isL1Active) {
+                    actionsHTML = `
+                        <div class="space-y-4">
+                            <button onclick="handleWorkflowAction('finalize')" class="w-full py-3 px-4 bg-green-700 text-white font-medium rounded-sm shadow-sm hover:bg-green-800 transition-colors flex items-center justify-center gap-2">
+                                Finalize & Officially Submit Submission
+                            </button>
+                            <button onclick="handleWorkflowAction('return_l2')" class="w-full py-3 px-4 bg-white border border-gray-300 text-gray-700 font-medium rounded-sm shadow-sm hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                                Return to Level 2 Manager
+                            </button>
+                        </div>`;
+                }
+
+                contentContainer.innerHTML = `
+                    <div class="animate-in fade-in duration-500 max-w-2xl">
+                        <h2 class="text-xl font-medium text-gray-900 border-b border-gray-100 pb-4 mb-8">Workflow & Authorization</h2>
+                        
+                        <div class="p-6 border border-gray-200 rounded-sm bg-gray-50 mb-8">
+                            <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-exclamation text-nswPurple"></i> Action Required
+                            </h3>
+                            ${messageHTML}
+                        </div>
+                        ${actionsHTML}
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize application
+        window.onload = render;
+    </script>
+</body>
+</html>
